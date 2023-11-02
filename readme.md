@@ -62,3 +62,21 @@ We have these rules that we must achieve
 - _INBOX.> allows you to connect to every inbox and listen to subscribe to other inboxes RESPONSE messages
 - _INBOX.{servicename}.> - Making your subscribe subject for inboxes helps protect against this.
 - _INBOX.> is needed for publish permissions unless you map all the other services that will send messages to this users subscription. A lot of effort.
+
+
+
+A few commands:
+
+nats sub "rpc.>" --user=god --password=god
+nats sub "_INBOX.>" --user=god --password=god
+
+nats sub "*" --user=rng --password=ExQDVTjkJvpNpNvC6k6Ly0qVzF3OvoODXG39Bdzv
+nats sub "rpc.*" --user=rng --password=ExQDVTjkJvpNpNvC6k6Ly0qVzF3OvoODXG39Bdzv
+nats sub "rpc.1_1_97.play" --user=rng --password=ExQDVTjkJvpNpNvC6k6Ly0qVzF3OvoODXG39Bdzv
+
+nats sub "rpc.rng.integers" --user=rng --password=ExQDVTjkJvpNpNvC6k6Ly0qVzF3OvoODXG39Bdzv
+
+nats pub rpc.hello.there 'hello there' --user=god --password=god
+nats pub rpc.rng.integers 'hello there' --user=god --password=god
+
+nats pub rpc.rng.integers 'hello there' --user=rgs --password=t7sueqyO1PU14utllwe3hJSPVX0sqP7e9xljNyga
